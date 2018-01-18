@@ -25,7 +25,7 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
-it('allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的', function() {
+it('测试对 allFeeds 对象中的每条反馈执行:循环操作， 并确保其具有定义的非空 URL。', function() {
             allFeeds.forEach(function(feed){ 
             expect(feed.url).toBeDefined();
             expect(feed.url).not.toEqual("");
@@ -37,7 +37,7 @@ it('allFeeds 对象里面的所有的源来保证有链接字段而且链接不�
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
 
-         it('allFeeds 对象里面的所有的源来保证有名字字段而且名字不是空的', function() {
+         it('测试对 allFeeds 对象中的每条反馈执行: 循环操作， 并确保其具有定义的非空名称', function() {
             allFeeds.forEach(function(feed){ 
             expect(feed.name).toBeDefined();
             expect(feed.name).not.toEqual("");
@@ -60,13 +60,13 @@ it('allFeeds 对象里面的所有的源来保证有链接字段而且链接不�
           */
 describe('The menu', function(){
 
-    it('测试菜单单元素默认是隐藏的', function(){
+    it('菜单 (menu) 元素在默认情况下处于隐藏状态', function(){
 expect($(".menu-hidden").length).not.toEqual(0);
 
 
     });
 
-it ('点击图标的时候菜单是否显示，再次点击的时候是否隐藏',function(){
+it ('当点击时，菜单是否显示， 当再次点击时，菜单是否隐藏',function(){
 $(".icon-list")[0].click()
 expect($(".menu-hidden").length).toEqual(0)
 
@@ -92,8 +92,9 @@ loadFeed(0,function(){
 });
 })
 
-it('保证 loadFeed 函数被调用而且工作正常，即在 .feed 容器元素,里面至少有一个 .entry 的元素',function(done){ 
-expect($(".feed.entry").length).not.toEqual(0);
+it('调用并执行 loadFeed 函数后， 在 .feed 容器中至少存在一个 .entry 元素',
+function(done){
+expect($(".feed.entry").length).toEqual(0);
 done();
 })
 
@@ -118,7 +119,7 @@ loadFeed(0,function(){
 
 });
 
-it('loadFeed 函数加载一个新源的时候内容会真的改变。',function(done){ 
+it('每当 loadFeed 函数加载一条新反馈后， 内容会相应更改',function(done){ 
 expect($(".feed").html()).not.toEqual(initHTML);
 done();
 })
